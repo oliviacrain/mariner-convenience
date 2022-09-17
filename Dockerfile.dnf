@@ -1,0 +1,10 @@
+FROM mcr.microsoft.com/cbl-mariner/base/core@sha256:68392e00cb131898cdb6d6a1205456c4c20e7c6ede2ab966c9c74109df6138e0
+
+# I often just want to use dnf `repoquery`, since I know it better
+# than tdnf's equivalent functionality.
+# So, let's create a container that is the base container + dnf.
+# We run dnf once here to ensure the repos' GPG keys are imported.
+RUN tdnf install -y dnf && \
+    dnf -y repoquery --whatprovides dnf
+
+CMD ["/bin/bash"]

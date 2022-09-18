@@ -35,7 +35,8 @@ jobs:
           images:
             ${{ env.REGISTRY }}/${{ github.repository_owner }}/mariner-${{ matrix.image }}
           tags:
-            type=semantic,pattern={{version}}
+            type=semver,pattern={{version}}
+            type=ref,event=pr
 
       - name: Authenticate to registry
         if: ${{ github.event_name != 'pull_request' }}

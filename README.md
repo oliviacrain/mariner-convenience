@@ -7,3 +7,5 @@ I'm only supporting 2.0 containers, since I don't do much work on 1.0 anymore. I
 ## Versioning
 
 The versioning schema is... roughly semver. The major version matches that of Mariner, the minor version is bumped every time the base container image version is updated, and the patch version is bumped when updating the container without a base image version update.
+
+All images will be released for every tag update.

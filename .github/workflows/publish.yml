@@ -71,5 +71,5 @@ jobs:
         env: 
           COSIGN_EXPERIMENTAL: "true"
         run: |
-          cosign sign ${{ steps.build.outputs.image }}@${{ steps.build.outputs.digest }}
+          cosign sign ${{ env.REGISTRY }}/${{ github.repository_owner }}/mariner-${{ matrix.image }}
 

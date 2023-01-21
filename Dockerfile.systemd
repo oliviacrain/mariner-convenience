@@ -1,0 +1,10 @@
+FROM mcr.microsoft.com/cbl-mariner/base/core:2.0.20230107
+
+# I want a container I can use as a rootfs with systemd-nspawn containers.
+# It basically just needs systemd, but I'll install the full base image
+# package set to have all the utilities I'd expect.
+# We run dnf once here to ensure the repos' GPG keys are imported.
+RUN tdnf install -y systemd core-packages-base-image dnf && \
+    dnf -y repoquery --whatprovides dnf
+
+CMD ["/bin/bash"]

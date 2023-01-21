@@ -18,7 +18,7 @@ jobs:
       id-token: write
     strategy:
       matrix:
-        image: [dnf]
+        image: [dnf, systemd]
     
     steps:
       - name: Checkout repo

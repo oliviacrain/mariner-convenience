@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/cbl-mariner/base/core:2.0.20230107
+FROM mcr.microsoft.com/cbl-mariner/base/core:2.0.20230126
 
 # I want a container I can use as a rootfs with systemd-nspawn containers.
 # It basically just needs systemd, but I'll install the full base image

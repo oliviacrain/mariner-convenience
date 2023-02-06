@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/cbl-mariner/base/core:2.0.20230126
 # than tdnf's equivalent functionality.
 # So, let's create a container that is the base container + dnf.
 # We run dnf once here to ensure the repos' GPG keys are imported.
-RUN tdnf install -y dnf && \
+RUN tdnf install -y dnf ca-certificates && \
     dnf -y repoquery --whatprovides dnf
 
 CMD ["/bin/bash"]

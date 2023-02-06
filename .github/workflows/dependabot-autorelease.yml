@@ -1,0 +1,28 @@
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  tag-dependabot-pr:
+    if: ${{ github.event.pull_request.merged == true }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v1.3.6
+      - name: Tag merge commit
+        if: ${{ steps.metadata.outputs.package-ecosystem == "docker" }}
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run: |
+          latest_release=$(gh release view --json tagName --jq '.tagName')
+          new_tag=$(echo $A | awk -F '.' '{print $1 "." int($2)+1 "." 0}')
+          new_title=$(echo $new_tag | sed 's/^v//')
+          gh release create $new_tag --generate-notes --title $new_title

@@ -18,7 +18,7 @@ jobs:
         id: metadata
         uses: dependabot/fetch-metadata@v1.3.6
       - name: Tag merge commit
-        if: ${{ steps.metadata.outputs.package-ecosystem == "docker" }}
+        if: steps.metadata.outputs.package-ecosystem == "docker"
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: |

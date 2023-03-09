@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/cbl-mariner/base/core:2.0.20230218
+FROM mcr.microsoft.com/cbl-mariner/base/core:2.0.20230303
 
 # Here's a container to mimic our tooling's package building environment.
 RUN tdnf install -y ca-certificates wget && \

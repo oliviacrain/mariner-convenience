@@ -1,7 +1,8 @@
 FROM mcr.microsoft.com/cbl-mariner/base/core:2.0.20230426
 
 # Here's a container to mimic our tooling's package building environment.
-RUN tdnf install -y ca-certificates wget && \
+# Adding dnf and dnf-plugins-core for `dnf builddep`
+RUN tdnf install -y ca-certificates wget dnf dnf-plugins-core && \
     wget https://raw.githubusercontent.com/microsoft/CBL-Mariner/2.0-stable/toolkit/resources/manifests/package/pkggen_core_$(uname -m).txt && \
     cat pkggen_core_$(uname -m).txt | sed "s|\.cm2.*$|\.cm2|" | \
         sed -E "s|^(msopenjdk.*)\.$(uname -m).rpm$|\1|" | \

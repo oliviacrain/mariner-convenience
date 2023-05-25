@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/cbl-mariner/base/core:2.0.20230426
+FROM mcr.microsoft.com/cbl-mariner/base/core:2.0.20230518
 
 # I often just want to use dnf `repoquery`, since I know it better
 # than tdnf's equivalent functionality.

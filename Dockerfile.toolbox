@@ -1,0 +1,22 @@
+FROM mcr.microsoft.com/cbl-mariner/base/core:2.0.20230526
+
+LABEL com.github.containers.toolbox="true"
+
+# Container that you can use with toolbox
+RUN tdnf install -y \
+        dnf \
+        ca-certificates \
+        shadow-utils \
+        libcap \
+        bash \
+        coreutils \
+        findutils \
+        curl \
+        sudo \
+        && \
+    dnf -y repoquery --whatprovides dnf && \
+    tdnf clean all && \
+    echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/toolbox && \
+    echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/toolbox
+
+ENTRYPOINT []

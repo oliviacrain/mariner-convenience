@@ -66,8 +66,6 @@ jobs:
       
       - name: Sign container image
         if: ${{ github.event_name != 'pull_request' }}
-        env: 
-          COSIGN_EXPERIMENTAL: "true"
         run: |
-          cosign sign ${{ env.REGISTRY }}/${{ github.repository_owner }}/mariner-${{ matrix.image }}@${{ steps.build.outputs.digest }}
+          cosign sign ${{ env.REGISTRY }}/${{ github.repository_owner }}/mariner-${{ matrix.image }}@${{ steps.build.outputs.digest }} --yes
 

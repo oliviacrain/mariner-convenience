@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/cbl-mariner/base/core:2.0.20230924
+FROM mcr.microsoft.com/cbl-mariner/base/core:2.0.20231004
 
 # Here's a container to mimic our tooling's package building environment.
 # Adding dnf and dnf-plugins-core for `dnf builddep`
